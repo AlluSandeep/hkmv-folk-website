@@ -7,7 +7,6 @@ import Accommodation from './pages/Accommodation'
 import Attendance from './pages/Attendance'
 import Login from './pages/Login'
 import Landing from './pages/Landing'
-import Splash from './components/Splash'
 import Devotees from './pages/Devotees'
 import SevaDashboard from './pages/SevaDashboard'
 import Profile from './pages/Profile'
@@ -19,13 +18,6 @@ import InstallPrompt from './components/layout/InstallPrompt'
 function App() {
   const { user, loading } = useAuth()
   const [activeTab, setActiveTab] = useState('dashboard')
-  const [showSplash, setShowSplash] = useState(() => {
-    try {
-      return !localStorage.getItem('fast_load_cache');
-    } catch (e) {
-      return true;
-    }
-  });
   const [showLanding, setShowLanding] = useState(() => {
     try {
       return !localStorage.getItem('fast_load_cache');
@@ -35,13 +27,6 @@ function App() {
   });
   const [globalScanner, setGlobalScanner] = useState({ isOpen: false, mode: 'attendance' });
 
-  // Rescue timer to ensure UI always appears even if Splash hangs
-  useEffect(() => {
-    if (showSplash) {
-      const timer = setTimeout(() => setShowSplash(false), 6000);
-      return () => clearTimeout(timer);
-    }
-  }, [showSplash]);
 
   useEffect(() => {
     if (user) {
@@ -52,15 +37,6 @@ function App() {
       }
     }
   }, [user]);
-
-  const handleSplashComplete = () => {
-    sessionStorage.setItem('splashShown', 'true')
-    setShowSplash(false)
-  }
-
-  if (showSplash) {
-    return <Splash onComplete={handleSplashComplete} />
-  }
 
   if (loading) {
     return (
