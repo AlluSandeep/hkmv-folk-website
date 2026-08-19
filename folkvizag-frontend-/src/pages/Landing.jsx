@@ -970,139 +970,608 @@ const Landing = ({ onLoginClick }) => {
 
 
       {/* =========================================================
-          ACCOMMODATION
-      ========================================================= */}
+    ACCOMMODATION
+========================================================= */}
 
-      <section
-        id="accommodation"
-        className="py-20 sm:py-28 px-4 sm:px-6 lg:px-8"
+<section
+  id="accommodation"
+  className="py-20 sm:py-28 px-4 sm:px-6 lg:px-8 bg-white"
+>
+  <div className="max-w-7xl mx-auto">
+
+    {/* SECTION HEADER */}
+
+    <div className="max-w-2xl mb-12">
+
+      <p className="text-sm font-bold text-[#FF9933] uppercase tracking-[0.18em]">
+        Accommodation
+      </p>
+
+      <h2 className="mt-3 text-4xl sm:text-5xl lg:text-6xl font-black tracking-tight leading-tight">
+        A comfortable
+        <span className="text-[#FF9933]">
+          {' '}stay experience.
+        </span>
+      </h2>
+
+      <p className="mt-5 text-base sm:text-lg text-gray-500 leading-8">
+        Explore accommodation options, facilities and stay information
+        in one simple place. Find the details you need before requesting
+        your stay.
+      </p>
+
+    </div>
+
+
+    {/* MAIN CONTENT */}
+
+    <div className="grid grid-cols-1 lg:grid-cols-5 gap-6">
+
+      {/* LEFT FEATURE CARD */}
+
+      <motion.div
+        initial={{ opacity: 0, x: -25 }}
+        whileInView={{ opacity: 1, x: 0 }}
+        viewport={{ once: true }}
+        transition={{ duration: 0.6 }}
+        className="lg:col-span-2 relative overflow-hidden rounded-[2rem] bg-gray-900 p-7 sm:p-9 min-h-[390px] flex flex-col justify-between"
       >
 
-        <div className="max-w-7xl mx-auto">
+        <div className="absolute top-[-100px] right-[-100px] w-72 h-72 bg-orange-500/10 rounded-full blur-3xl" />
 
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center">
+        <div className="absolute bottom-[-120px] left-[-120px] w-72 h-72 bg-yellow-500/10 rounded-full blur-3xl" />
 
-            <div>
+        <div className="relative z-10">
 
-              <p className="text-sm font-bold text-[#FF9933] uppercase tracking-[0.18em]">
-                Accommodation
-              </p>
-
-              <h2 className="mt-3 text-4xl sm:text-5xl font-black tracking-tight">
-                A clearer stay experience.
-              </h2>
-
-              <p className="mt-6 text-gray-500 leading-7 max-w-xl">
-                Location, room information, facilities, photos,
-                rules and availability can be presented clearly
-                for devotees.
-              </p>
-
-              <Button
-                onClick={onLoginClick}
-                className="mt-7 px-7 py-4 bg-[#FF9933] text-white rounded-xl font-semibold hover:bg-[#e88822] transition-all"
-              >
-                Request Accommodation
-              </Button>
-
-            </div>
-
-
-            <div className="grid grid-cols-2 gap-4">
-
-              {[
-                'Location',
-                'Room Information',
-                'Facilities',
-                'Availability',
-                'Photos',
-                'Rules',
-              ].map((item, index) => (
-
-                <motion.div
-                  key={item}
-                  initial={{ opacity: 0, y: 15 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ delay: index * 0.05 }}
-                  className="bg-white rounded-2xl border border-gray-100 p-6 shadow-sm hover:shadow-md transition-shadow"
-                >
-
-                  <CheckCircle2
-                    size={22}
-                    className="text-[#FF9933]"
-                  />
-
-                  <p className="mt-4 font-semibold text-gray-800">
-                    {item}
-                  </p>
-
-                </motion.div>
-
-              ))}
-
-            </div>
-
+          <div className="w-14 h-14 rounded-2xl bg-white/10 flex items-center justify-center">
+            <Home
+              size={27}
+              className="text-[#FF9933]"
+            />
           </div>
 
+          <p className="mt-8 text-[10px] uppercase tracking-[0.18em] text-gray-500 font-bold">
+            Temple Stay
+          </p>
+
+          <h3 className="mt-3 text-3xl sm:text-4xl font-black text-white leading-tight">
+            Stay close to
+            <span className="text-[#FF9933]">
+              {' '}the experience.
+            </span>
+          </h3>
+
+          <p className="mt-5 text-sm sm:text-base text-gray-400 leading-7 max-w-md">
+            Check room information, facilities, availability and
+            stay guidelines before submitting your accommodation request.
+          </p>
+
         </div>
-      </section>
+
+        <Button
+          onClick={onLoginClick}
+          className="relative z-10 mt-8 w-full sm:w-fit px-7 py-4 bg-[#FF9933] text-white rounded-xl font-semibold hover:bg-[#e88822] transition-all flex items-center justify-center gap-2"
+        >
+          Request Accommodation
+          <ArrowRight size={17} />
+        </Button>
+
+      </motion.div>
+
+
+      {/* RIGHT INFORMATION GRID */}
+
+      <div className="lg:col-span-3 grid grid-cols-1 sm:grid-cols-2 gap-4">
+
+        {[
+          {
+            title: 'Location',
+            description:
+              'View the accommodation location and nearby access points.',
+            icon: <MapPin size={22} />,
+          },
+          {
+            title: 'Room Information',
+            description:
+              'Understand room types and available stay options.',
+            icon: <Home size={22} />,
+          },
+          {
+            title: 'Facilities',
+            description:
+              'Explore the facilities available during your stay.',
+            icon: <CheckCircle2 size={22} />,
+          },
+          {
+            title: 'Availability',
+            description:
+              'Check available accommodation before requesting a stay.',
+            icon: <Calendar size={22} />,
+          },
+          {
+            title: 'Photos',
+            description:
+              'Get a visual idea of the accommodation and surroundings.',
+            icon: <Sparkles size={22} />,
+          },
+          {
+            title: 'Rules & Guidelines',
+            description:
+              'Review important stay rules and guidelines.',
+            icon: <BookOpen size={22} />,
+          },
+        ].map((item, index) => (
+
+          <motion.div
+            key={item.title}
+            initial={{ opacity: 0, y: 18 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{
+              duration: 0.4,
+              delay: index * 0.06,
+            }}
+            className="group bg-[#FDF9F1] rounded-2xl border border-orange-50 p-6 hover:bg-white hover:border-orange-100 hover:shadow-lg hover:-translate-y-1 transition-all duration-300"
+          >
+
+            <div className="flex items-start justify-between">
+
+              <div className="w-12 h-12 rounded-xl bg-white text-[#FF9933] flex items-center justify-center shadow-sm group-hover:bg-[#FF9933] group-hover:text-white transition-colors">
+                {item.icon}
+              </div>
+
+              <ChevronRight
+                size={18}
+                className="text-gray-300 group-hover:text-[#FF9933] transition-colors"
+              />
+
+            </div>
+
+            <h3 className="mt-5 text-lg font-bold text-gray-900">
+              {item.title}
+            </h3>
+
+            <p className="mt-2 text-sm text-gray-500 leading-6">
+              {item.description}
+            </p>
+
+          </motion.div>
+
+        ))}
+
+      </div>
+
+    </div>
+
+  </div>
+</section>
 
 
       {/* =========================================================
-          GALLERY
-      ========================================================= */}
+    GALLERY
+========================================================= */}
 
-      <section
-        id="gallery"
-        className="py-20 sm:py-28 px-4 sm:px-6 lg:px-8 bg-white"
+<section
+  id="gallery"
+  className="py-20 sm:py-28 px-4 sm:px-6 lg:px-8 bg-[#FDF9F1]"
+>
+  <div className="max-w-7xl mx-auto">
+
+    {/* HEADER */}
+
+    <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-5 mb-12">
+
+      <div className="max-w-2xl">
+
+        <p className="text-sm font-bold text-[#FF9933] uppercase tracking-[0.18em]">
+          Gallery
+        </p>
+
+        <h2 className="mt-3 text-4xl sm:text-5xl lg:text-6xl font-black tracking-tight text-gray-900">
+          Moments that
+          <span className="text-[#FF9933]">
+            {' '}bring us together.
+          </span>
+        </h2>
+
+        <p className="mt-5 text-base sm:text-lg text-gray-500 leading-8">
+          Explore moments from HKMV Folk events, youth activities,
+          seva, workshops, festivals and spiritual gatherings.
+        </p>
+
+      </div>
+
+      <a
+        href="#contact"
+        className="flex items-center gap-2 text-sm font-bold text-[#FF9933] hover:gap-3 transition-all"
       >
+        View More
+        <ArrowRight size={17} />
+      </a>
 
-        <div className="max-w-7xl mx-auto">
+    </div>
 
-          <div className="mb-12">
 
-            <p className="text-sm font-bold text-[#FF9933] uppercase tracking-[0.18em]">
-              Gallery
-            </p>
+    {/* GALLERY GRID */}
 
-            <h2 className="mt-3 text-4xl sm:text-5xl font-black tracking-tight">
-              Activities in pictures.
-            </h2>
+    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
 
-            <p className="mt-4 text-gray-500 max-w-xl">
-              A visual space for events, festivals, seva activities,
-              workshops and community moments.
+      {[
+        {
+          title: 'Events',
+          image: '/gallery-events.jpg',
+          size: 'lg:col-span-2 lg:row-span-2',
+        },
+        {
+          title: 'Youth Activities',
+          image: '/gallery-youth.jpg',
+          size: '',
+        },
+        {
+          title: 'Seva',
+          image: '/gallery-seva.jpg',
+          size: '',
+        },
+        {
+          title: 'Workshops',
+          image: '/gallery-workshops.jpg',
+          size: '',
+        },
+        {
+          title: 'Festivals',
+          image: '/gallery-festivals.jpg',
+          size: '',
+        },
+        {
+          title: 'Yatras',
+          image: '/gallery-yatras.jpg',
+          size: 'lg:col-span-2',
+        },
+      ].map((item, index) => (
+
+        <motion.div
+          key={item.title}
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{
+            duration: 0.45,
+            delay: index * 0.06,
+          }}
+          className={`group relative overflow-hidden rounded-[1.75rem] bg-white border border-gray-200 shadow-sm hover:shadow-xl transition-all duration-300 min-h-[210px] ${item.size}`}
+        >
+
+          {/* IMAGE */}
+
+          <img
+            src={item.image}
+            alt={`${item.title} - HKMV Folk`}
+            className="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
+          />
+
+          {/* IMAGE OVERLAY */}
+
+          <div className="absolute inset-0 bg-gradient-to-t from-black/75 via-black/20 to-transparent" />
+
+          {/* TOP BADGE */}
+
+          <div className="absolute top-4 left-4">
+
+            <span className="px-3 py-1.5 bg-white/90 backdrop-blur-sm rounded-full text-[10px] font-bold uppercase tracking-wider text-gray-700 shadow-sm">
+              HKMV Folk
+            </span>
+
+          </div>
+
+
+          {/* CONTENT */}
+
+          <div className="absolute inset-x-0 bottom-0 p-5 sm:p-6">
+
+            <div className="flex items-end justify-between gap-4">
+
+              <div>
+
+                <h3 className="text-xl sm:text-2xl font-black text-white">
+                  {item.title}
+                </h3>
+
+                <p className="mt-1 text-xs text-white/70">
+                  Explore moments & activities
+                </p>
+
+              </div>
+
+              <div className="w-10 h-10 rounded-xl bg-white/15 backdrop-blur-md border border-white/20 flex items-center justify-center text-white group-hover:bg-[#FF9933] group-hover:border-[#FF9933] transition-all shrink-0">
+
+                <ChevronRight size={18} />
+
+              </div>
+
+            </div>
+
+          </div>
+
+        </motion.div>
+
+      ))}
+
+    </div>
+
+  </div>
+</section>
+
+      {/* =========================================================
+    TESTIMONIALS
+========================================================= */}
+
+<section
+  id="testimonials"
+  className="py-20 sm:py-28 px-4 sm:px-6 lg:px-8 bg-white"
+>
+  <div className="max-w-7xl mx-auto">
+
+    {/* HEADER */}
+
+    <div className="text-center max-w-3xl mx-auto">
+
+      <p className="text-sm font-bold text-[#FF9933] uppercase tracking-[0.18em]">
+        Community Voices
+      </p>
+
+      <h2 className="mt-3 text-4xl sm:text-5xl lg:text-6xl font-black tracking-tight">
+        What Our
+        <span className="text-[#FF9933]">
+          {' '}Community Says.
+        </span>
+      </h2>
+
+      <p className="mt-5 text-base sm:text-lg text-gray-500 leading-8">
+        Real experiences from participants who are part of
+        HKMV Folk activities and community initiatives.
+      </p>
+
+    </div>
+
+
+    {/* TESTIMONIAL CARDS */}
+
+    <div className="mt-12 grid grid-cols-1 md:grid-cols-3 gap-5">
+
+      {[
+        {
+          category: 'Community',
+          placeholder:
+            'Real participant feedback can be displayed here.',
+        },
+        {
+          category: 'Spiritual Experience',
+          placeholder:
+            'Share a genuine experience from an HKMV Folk participant.',
+        },
+        {
+          category: 'Seva & Activities',
+          placeholder:
+            'Highlight a real community experience or seva journey.',
+        },
+      ].map((item, index) => (
+
+        <motion.div
+          key={item.category}
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{
+            duration: 0.45,
+            delay: index * 0.08,
+          }}
+          className="group bg-[#FDF9F1] rounded-3xl border border-gray-200 p-7 sm:p-8 hover:bg-white hover:shadow-lg hover:-translate-y-1 transition-all duration-300"
+        >
+
+          {/* STARS */}
+
+          <div className="flex gap-1 text-[#FF9933]">
+
+            {[1, 2, 3, 4, 5].map((star) => (
+              <span
+                key={star}
+                className="text-sm"
+              >
+                ★
+              </span>
+            ))}
+
+          </div>
+
+
+          {/* QUOTE */}
+
+          <div className="mt-6">
+
+            <span className="text-4xl font-black text-orange-200 leading-none">
+              “
+            </span>
+
+            <p className="mt-2 text-sm sm:text-base text-gray-500 leading-7">
+              {item.placeholder}
             </p>
 
           </div>
 
 
-          <div className="grid grid-cols-2 lg:grid-cols-4 gap-4">
+          {/* PERSON PLACEHOLDER */}
+
+          <div className="mt-7 pt-5 border-t border-gray-200">
+
+            <div className="flex items-center gap-3">
+
+              <div className="w-11 h-11 rounded-full bg-orange-100 flex items-center justify-center">
+                <Users
+                  size={19}
+                  className="text-[#FF9933]"
+                />
+              </div>
+
+              <div>
+
+                <p className="text-sm font-bold text-gray-800">
+                  Community Participant
+                </p>
+
+                <p className="text-xs text-gray-400">
+                  {item.category}
+                </p>
+
+              </div>
+
+            </div>
+
+          </div>
+
+        </motion.div>
+
+      ))}
+
+    </div>
+
+
+    {/* NOTE */}
+
+    <div className="mt-8 text-center">
+
+      <p className="text-xs text-gray-400">
+        Testimonials will be updated with genuine participant
+        experiences and feedback.
+      </p>
+
+    </div>
+
+  </div>
+</section>                  
+
+
+      {/* =========================================================
+    CTA
+========================================================= */}
+
+<section
+  id="join"
+  className="py-20 lg:py-32 px-4 sm:px-6 lg:px-8 bg-[#FDF9F1]"
+>
+  <div className="max-w-6xl mx-auto">
+
+    <div className="relative overflow-hidden bg-gray-900 rounded-[2.5rem] lg:rounded-[3.5rem] p-10 sm:p-16 lg:p-24 text-center">
+
+      {/* BACKGROUND GLOW */}
+
+      <div className="absolute top-[-140px] left-[-100px] w-80 h-80 bg-orange-500/10 rounded-full blur-3xl" />
+
+      <div className="absolute bottom-[-140px] right-[-100px] w-80 h-80 bg-yellow-500/10 rounded-full blur-3xl" />
+
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-96 h-96 bg-orange-500/5 rounded-full blur-3xl" />
+
+
+      {/* CONTENT */}
+
+      <div className="relative z-10">
+
+        {/* ICON */}
+
+        <motion.div
+          initial={{ opacity: 0, scale: 0.8 }}
+          whileInView={{ opacity: 1, scale: 1 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.5 }}
+          className="w-20 h-20 bg-white/10 border border-white/10 rounded-3xl flex items-center justify-center mx-auto"
+        >
+          <Sparkles
+            size={34}
+            className="text-[#FF9933]"
+          />
+        </motion.div>
+
+
+        {/* LABEL */}
+
+        <p className="mt-8 text-sm font-bold text-[#FF9933] uppercase tracking-[0.18em]">
+          Be Part of the Community
+        </p>
+
+
+        {/* HEADING */}
+
+        <h2 className="mt-4 text-4xl sm:text-6xl lg:text-7xl font-black tracking-tight text-white leading-[0.95]">
+
+          Connect.
+          <br />
+
+          <span className="text-[#FF9933]">
+            Participate.
+          </span>
+
+          <br />
+
+          Serve.
+
+        </h2>
+
+
+        {/* DESCRIPTION */}
+
+        <p className="mt-7 text-base sm:text-lg text-gray-400 max-w-2xl mx-auto leading-8">
+          Discover spiritual experiences, events, seva, sadhana
+          and community activities through HKMV Folk.
+        </p>
+
+
+        {/* BUTTONS */}
+
+        <div className="mt-9 flex flex-col sm:flex-row justify-center gap-4">
+
+          <Button
+            onClick={onLoginClick}
+            className="px-9 py-4 bg-[#FF9933] text-white rounded-xl font-bold hover:bg-[#e88822] hover:-translate-y-0.5 transition-all flex items-center justify-center gap-2"
+          >
+            Join HKMV Folk
+            <ArrowRight size={18} />
+          </Button>
+
+          <a
+            href="#events"
+            className="px-9 py-4 bg-white/10 border border-white/15 text-white rounded-xl font-bold hover:bg-white hover:text-gray-900 transition-all flex items-center justify-center gap-2"
+          >
+            Explore Events
+            <ChevronRight size={18} />
+          </a>
+
+        </div>
+
+
+        {/* QUICK BENEFITS */}
+
+        <div className="mt-10 pt-8 border-t border-white/10">
+
+          <div className="flex flex-wrap justify-center gap-x-7 gap-y-3">
 
             {[
               'Events',
-              'Youth Activities',
               'Seva',
-              'Workshops',
-              'Festivals',
-              'Yatras',
-            ].map((item, index) => (
+              'Sadhana',
+              'Accommodation',
+              'Community',
+            ].map((item) => (
 
               <div
                 key={item}
-                className={`group relative overflow-hidden rounded-3xl bg-gradient-to-br from-orange-50 to-yellow-50 border border-gray-100 flex items-end p-5 min-h-[180px] ${
-                  index === 0 || index === 3
-                    ? 'lg:col-span-2'
-                    : ''
-                }`}
+                className="flex items-center gap-2 text-xs sm:text-sm text-gray-400"
               >
 
-                <div className="absolute inset-0 opacity-0 group-hover:opacity-100 bg-orange-200/20 transition-opacity" />
+                <CheckCircle2
+                  size={15}
+                  className="text-[#FF9933]"
+                />
 
-                <span className="relative z-10 px-4 py-2 bg-white rounded-full text-sm font-bold shadow-sm">
-                  {item}
-                </span>
+                {item}
 
               </div>
 
@@ -1111,291 +1580,280 @@ const Landing = ({ onLoginClick }) => {
           </div>
 
         </div>
-      </section>
 
-
-      {/* =========================================================
-          TESTIMONIALS
-      ========================================================= */}
-
-      <section className="py-20 sm:py-28 px-4 sm:px-6 lg:px-8">
-
-        <div className="max-w-5xl mx-auto text-center">
-
-          <p className="text-sm font-bold text-[#FF9933] uppercase tracking-[0.18em]">
-            Community
-          </p>
-
-          <h2 className="mt-3 text-4xl sm:text-5xl font-black tracking-tight">
-            What Our Community Says
-          </h2>
-
-          <div className="mt-10 bg-white border border-gray-100 rounded-3xl p-8 sm:p-12 shadow-sm">
-
-            <div className="flex justify-center gap-1 text-[#FF9933]">
-
-              {[1, 2, 3, 4, 5].map((item) => (
-                <span key={item}>★</span>
-              ))}
-
-            </div>
-
-            <p className="mt-6 text-lg text-gray-500 leading-8 max-w-2xl mx-auto">
-              Genuine participant experiences and testimonials
-              can be displayed here to highlight the impact of
-              HKMV Folk activities.
-            </p>
-
-          </div>
-
-        </div>
-      </section>
-
-
-      {/* =========================================================
-          CTA
-      ========================================================= */}
-
-      <section className="py-20 lg:py-32 px-4 sm:px-6 lg:px-8">
-
-        <div className="max-w-6xl mx-auto relative overflow-hidden bg-white rounded-[3rem] shadow-xl border border-gray-100 p-10 sm:p-16 lg:p-24 text-center">
-
-          <div className="absolute top-[-120px] left-[-120px] w-72 h-72 bg-orange-100/60 rounded-full blur-3xl" />
-
-          <div className="absolute bottom-[-120px] right-[-120px] w-72 h-72 bg-yellow-100/60 rounded-full blur-3xl" />
-
-          <div className="relative z-10">
-
-            <div className="w-20 h-20 bg-orange-50 text-[#FF9933] rounded-3xl flex items-center justify-center mx-auto">
-              <Sparkles size={36} />
-            </div>
-
-            <h2 className="mt-8 text-4xl sm:text-6xl lg:text-7xl font-black tracking-tight">
-
-              Join
-              <span className="text-[#FF9933]">
-                {' '}HKMV Folk.
-              </span>
-
-            </h2>
-
-            <p className="mt-6 text-lg text-gray-500 max-w-2xl mx-auto leading-8">
-              Discover events, activities, seva, sadhana and
-              community experiences in one place.
-            </p>
-
-            <div className="mt-8 flex flex-col sm:flex-row justify-center gap-4">
-
-              <Button
-                onClick={onLoginClick}
-                className="px-10 py-5 bg-gray-900 text-white rounded-2xl font-bold hover:bg-[#FF9933] transition-all"
-              >
-                Join HKMV Folk
-              </Button>
-
-              <a
-                href="#events"
-                className="px-10 py-5 border border-gray-200 rounded-2xl font-bold hover:border-[#FF9933] hover:text-[#FF9933] transition-all"
-              >
-                Explore Events
-              </a>
-
-            </div>
-
-          </div>
-
-        </div>
-
-      </section>
-
-
-      {/* =========================================================
-          CONTACT
-      ========================================================= */}
-
-      <section
-        id="contact"
-        className="py-20 sm:py-28 px-4 sm:px-6 lg:px-8 bg-white"
-      >
-
-        <div className="max-w-7xl mx-auto">
-
-          <div className="max-w-2xl">
-
-            <p className="text-sm font-bold text-[#FF9933] uppercase tracking-[0.18em]">
-              Contact
-            </p>
-
-            <h2 className="mt-3 text-4xl sm:text-5xl font-black tracking-tight">
-              Get in touch.
-            </h2>
-
-            <p className="mt-4 text-gray-500 leading-7">
-              Have questions about programs, events, seva or
-              accommodation? Connect with HKMV Folk.
-            </p>
-
-          </div>
-
-
-          <div className="mt-12 grid grid-cols-1 md:grid-cols-3 gap-5">
-
-            <div className="p-7 bg-[#FDF9F1] rounded-3xl border border-orange-50">
-
-              <MapPin
-                className="text-[#FF9933]"
-                size={26}
-              />
-
-              <h3 className="mt-5 font-bold text-gray-900">
-                Address
-              </h3>
-
-              <p className="mt-2 text-sm text-gray-500">
-                HKMV Folk / Temple Location
-              </p>
-
-            </div>
-
-
-            <div className="p-7 bg-[#FDF9F1] rounded-3xl border border-orange-50">
-
-              <Music
-                className="text-[#FF9933]"
-                size={26}
-              />
-
-              <h3 className="mt-5 font-bold text-gray-900">
-                Phone / Email
-              </h3>
-
-              <p className="mt-2 text-sm text-gray-500">
-                Contact information can be added here.
-              </p>
-
-            </div>
-
-
-            <div className="p-7 bg-[#FDF9F1] rounded-3xl border border-orange-50">
-
-              <MapPin
-                className="text-[#FF9933]"
-                size={26}
-              />
-
-              <h3 className="mt-5 font-bold text-gray-900">
-                Location / Map
-              </h3>
-
-              <p className="mt-2 text-sm text-gray-500">
-                Map and location details can be displayed here.
-              </p>
-
-            </div>
-
-          </div>
-
-        </div>
-      </section>
-
-
-      {/* =========================================================
-          FOOTER
-      ========================================================= */}
-
-      <footer className="py-16 px-6 lg:px-12 bg-white border-t border-gray-100">
-
-        <div className="max-w-7xl mx-auto">
-
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-10 items-center">
-
-            <div className="flex flex-col items-center md:items-start gap-3">
-
-              <img
-                src="/logo.png"
-                alt="Folk Vizag Logo"
-                className="h-10 w-auto object-contain"
-              />
-
-              <p className="text-xs text-gray-400">
-                Connecting people through spirituality,
-                community and seva.
-              </p>
-
-            </div>
-
-
-            <div className="flex flex-wrap justify-center gap-x-6 gap-y-3 text-sm text-gray-500">
-
-              <a
-                href="#about"
-                className="hover:text-[#FF9933] transition"
-              >
-                About
-              </a>
-
-              <a
-                href="#programs"
-                className="hover:text-[#FF9933] transition"
-              >
-                Programs
-              </a>
-
-              <a
-                href="#events"
-                className="hover:text-[#FF9933] transition"
-              >
-                Events
-              </a>
-
-              <a
-                href="#gallery"
-                className="hover:text-[#FF9933] transition"
-              >
-                Gallery
-              </a>
-
-              <a
-                href="#contact"
-                className="hover:text-[#FF9933] transition"
-              >
-                Contact
-              </a>
-
-            </div>
-
-
-            <div className="flex flex-col items-center md:items-end gap-3">
-
-              <div className="flex gap-3">
-
-                {[1, 2, 3].map((item) => (
-
-                  <div
-                    key={item}
-                    className="w-9 h-9 rounded-xl bg-gray-50 border border-gray-100 flex items-center justify-center text-gray-400 hover:text-[#FF9933] transition"
-                  >
-                    <Music size={16} />
-                  </div>
-
-                ))}
-
-              </div>
-
-              <p className="text-xs text-gray-400">
-                © {new Date().getFullYear()} FOLK VIZAG
-              </p>
-
-            </div>
-
-          </div>
-
-        </div>
-
-      </footer>
+      </div>
 
     </div>
-  );
+
+  </div>
+</section>
+
+
+      {/* =========================================================
+    CONTACT
+========================================================= */}
+
+<section
+  id="contact"
+  className="py-20 sm:py-28 px-4 sm:px-6 lg:px-8 bg-white"
+>
+  <div className="max-w-7xl mx-auto">
+
+    {/* Contact Heading */}
+    <div className="max-w-2xl">
+      <p className="text-sm font-bold text-[#FF9933] uppercase tracking-[0.18em]">
+        Contact
+      </p>
+
+      <h2 className="mt-3 text-4xl sm:text-5xl font-black tracking-tight">
+        Get in touch.
+      </h2>
+
+      <p className="mt-4 text-gray-500 leading-7">
+        Have questions about programs, events, seva or
+        accommodation? Connect with HKMV Folk.
+      </p>
+    </div>
+
+    {/* Contact Cards */}
+    <div className="mt-12 grid grid-cols-1 md:grid-cols-3 gap-5">
+
+      {/* Address */}
+      <div className="p-7 bg-[#FDF9F1] rounded-3xl border border-orange-50 hover:shadow-md transition-shadow">
+
+        <div className="w-12 h-12 rounded-xl bg-orange-50 flex items-center justify-center">
+          <MapPin
+            className="text-[#FF9933]"
+            size={25}
+          />
+        </div>
+
+        <h3 className="mt-5 font-bold text-gray-900">
+          Address
+        </h3>
+
+        <p className="mt-2 text-sm text-gray-500 leading-6">
+          HKMV Folk / Temple Location
+        </p>
+
+      </div>
+
+
+      {/* Phone / Email */}
+      <div className="p-7 bg-[#FDF9F1] rounded-3xl border border-orange-50 hover:shadow-md transition-shadow">
+
+        <div className="w-12 h-12 rounded-xl bg-orange-50 flex items-center justify-center">
+          <Music
+            className="text-[#FF9933]"
+            size={25}
+          />
+        </div>
+
+        <h3 className="mt-5 font-bold text-gray-900">
+          Phone / Email
+        </h3>
+
+        <p className="mt-2 text-sm text-gray-500 leading-6">
+          Contact information can be added here.
+        </p>
+
+      </div>
+
+
+      {/* Location */}
+      <div className="p-7 bg-[#FDF9F1] rounded-3xl border border-orange-50 hover:shadow-md transition-shadow">
+
+        <div className="w-12 h-12 rounded-xl bg-orange-50 flex items-center justify-center">
+          <MapPin
+            className="text-[#FF9933]"
+            size={25}
+          />
+        </div>
+
+        <h3 className="mt-5 font-bold text-gray-900">
+          Location / Map
+        </h3>
+
+        <p className="mt-2 text-sm text-gray-500 leading-6">
+          Map and location details can be displayed here.
+        </p>
+
+      </div>
+
+    </div>
+
+  </div>
+</section>
+
+
+{/* =========================================================
+    FOOTER
+========================================================= */}
+
+<footer className="py-14 px-6 lg:px-12 bg-gray-900 border-t border-gray-800">
+
+  <div className="max-w-7xl mx-auto">
+
+    <div className="grid grid-cols-1 md:grid-cols-4 gap-10">
+
+      {/* BRAND */}
+
+      <div className="md:col-span-1">
+
+        <img
+          src="/logo.png"
+          alt="Folk Vizag Logo"
+          className="h-10 w-auto object-contain brightness-0 invert"
+        />
+
+        <p className="mt-5 text-sm text-gray-400 leading-6 max-w-xs">
+          Connecting people through spirituality, community,
+          seva and meaningful experiences.
+        </p>
+
+      </div>
+
+
+      {/* QUICK LINKS */}
+
+      <div>
+
+        <h3 className="text-sm font-bold text-white">
+          Explore
+        </h3>
+
+        <div className="mt-5 flex flex-col gap-3">
+
+          <a
+            href="#about"
+            className="text-sm text-gray-400 hover:text-[#FF9933] transition"
+          >
+            About
+          </a>
+
+          <a
+            href="#programs"
+            className="text-sm text-gray-400 hover:text-[#FF9933] transition"
+          >
+            Programs
+          </a>
+
+          <a
+            href="#events"
+            className="text-sm text-gray-400 hover:text-[#FF9933] transition"
+          >
+            Events
+          </a>
+
+          <a
+            href="#gallery"
+            className="text-sm text-gray-400 hover:text-[#FF9933] transition"
+          >
+            Gallery
+          </a>
+
+        </div>
+
+      </div>
+
+
+      {/* COMMUNITY */}
+
+      <div>
+
+        <h3 className="text-sm font-bold text-white">
+          Community
+        </h3>
+
+        <div className="mt-5 flex flex-col gap-3">
+
+          <a
+            href="#seva"
+            className="text-sm text-gray-400 hover:text-[#FF9933] transition"
+          >
+            Seva
+          </a>
+
+          <a
+            href="#accommodation"
+            className="text-sm text-gray-400 hover:text-[#FF9933] transition"
+          >
+            Accommodation
+          </a>
+
+          <a
+            href="#testimonials"
+            className="text-sm text-gray-400 hover:text-[#FF9933] transition"
+          >
+            Community Voices
+          </a>
+
+          <a
+            href="#join"
+            className="text-sm text-gray-400 hover:text-[#FF9933] transition"
+          >
+            Join HKMV Folk
+          </a>
+
+        </div>
+
+      </div>
+
+
+      {/* CONNECT */}
+
+      <div>
+
+        <h3 className="text-sm font-bold text-white">
+          Connect
+        </h3>
+
+        <p className="mt-5 text-sm text-gray-400 leading-6">
+          Stay connected with HKMV Folk and discover upcoming
+          activities and community experiences.
+        </p>
+
+        <div className="mt-5 flex gap-3">
+
+          {[1, 2, 3].map((item) => (
+
+            <button
+              key={item}
+              type="button"
+              className="w-10 h-10 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center text-gray-400 hover:text-[#FF9933] hover:border-[#FF9933] transition"
+            >
+              <Music size={16} />
+            </button>
+
+          ))}
+
+        </div>
+
+      </div>
+
+    </div>
+
+
+    {/* BOTTOM */}
+
+    <div className="mt-12 pt-7 border-t border-gray-800 flex flex-col sm:flex-row items-center justify-between gap-4">
+
+      <p className="text-xs text-gray-500">
+        © {new Date().getFullYear()} FOLK VIZAG. All rights reserved.
+      </p>
+
+      <p className="text-xs text-gray-500">
+        Spirituality • Community • Seva
+      </p>
+
+    </div>
+
+  </div>
+
+</footer>
+
+</div>
+);
 };
 
 export default Landing;
