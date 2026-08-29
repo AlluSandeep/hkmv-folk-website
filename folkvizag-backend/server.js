@@ -68,6 +68,7 @@ app.all('/ping', (req, res) => {
 
 // --- EVENTS ---
 app.post('/createEvent', handleOnCall(eventHandler.createEvent));
+app.post('/getEvents', handleOnCall(eventHandler.getEvents));
 
 // --- ATTENDANCE ---
 app.post('/verifyAttendance', handleOnCall(attendanceHandler.verifyAttendance));

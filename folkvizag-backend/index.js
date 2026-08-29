@@ -45,6 +45,7 @@ exports.onUserCreate = functions.auth.user().onCreate(authHandler.onUserCreate);
 
 // --- EVENTS ---
 exports.createEvent = wrapWithCors(eventHandler.createEvent);
+exports.getEvents = wrapWithCors(eventHandler.getEvents);
 
 // --- ATTENDANCE ---
 exports.verifyAttendance = wrapWithCors(attendanceHandler.verifyAttendance);

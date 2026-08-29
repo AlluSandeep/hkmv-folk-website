@@ -39,3 +39,20 @@ exports.createEvent = async (data, context) => {
   
   return { success: true, eventId, attendanceToken };
 };
+
+exports.getEvents = async () => {
+  const snapshot = await db
+    .collection("events")
+    .orderBy("date", "asc")
+    .get();
+
+  const events = snapshot.docs.map((doc) => ({
+    id: doc.id,
+    ...doc.data(),
+  }));
+
+  return {
+    success: true,
+    events,
+  };
+};

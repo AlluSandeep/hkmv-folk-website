@@ -1,5 +1,6 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { motion } from 'framer-motion';
+import { callApi } from '../lib/api';
 import {
   ArrowRight,
   Flame,
@@ -24,6 +25,7 @@ import {
 import Button from '../components/ui/Button';
 
 const Landing = ({ onLoginClick }) => {
+  const [events, setEvents] = useState([]);
   const programs = [
     {
       title: 'Youth Programs',
@@ -105,6 +107,19 @@ const Landing = ({ onLoginClick }) => {
       icon: <Home size={18} />,
     },
   ];
+
+  useEffect(() => {
+  const loadEvents = async () => {
+    try {
+      const response = await callApi('getEvents');
+      setEvents(response.events || []);
+    } catch (error) {
+      console.error('Failed to load events:', error);
+    }
+  };
+
+  loadEvents();
+}, []);
 
   return (
     <div className="min-h-screen bg-[#FDF9F1] text-gray-900 overflow-x-hidden">
@@ -601,22 +616,16 @@ const Landing = ({ onLoginClick }) => {
         </div>
       </section>
 
-
-      {/* =========================================================
-          EVENTS
-      ========================================================= */}
-
-      {/* ================= EVENTS ================= */}
+     {/* ================= EVENTS ================= */}
 
 <section
   id="events"
   className="py-20 sm:py-28 px-4 sm:px-6 lg:px-8 bg-white"
 >
-
   <div className="max-w-7xl mx-auto">
 
     {/* Events Heading */}
-    <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-6 mb-10 px-4 sm:px-6 lg:px-8">
+    <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-6 mb-10">
 
       <div>
         <p className="text-sm font-bold text-[#FF9933] uppercase tracking-[0.18em]">
@@ -646,97 +655,116 @@ const Landing = ({ onLoginClick }) => {
 
     {/* Event Cards */}
 
-    <div className="grid grid-cols-1 md:grid-cols-3 gap-5 px-4 sm:px-6 lg:px-8">
+    {events.length > 0 ? (
 
-      {[
-        {
-          title: 'Upcoming Festival',
-          date: 'Coming Soon',
-          type: 'Festival',
-        },
-        {
-          title: 'Spiritual Session',
-          date: 'Coming Soon',
-          type: 'Spiritual',
-        },
-        {
-          title: 'Community Activity',
-          date: 'Coming Soon',
-          type: 'Community',
-        },
-      ].map((event, index) => (
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
 
-        <motion.div
-          key={event.title}
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{
-            duration: 0.45,
-            delay: index * 0.08,
-          }}
-          className="group bg-white rounded-3xl border border-gray-100 overflow-hidden shadow-sm hover:shadow-lg hover:-translate-y-1 transition-all duration-300"
-        >
+        {events.map((event, index) => (
 
-          {/* Event Image */}
+          <motion.div
+            key={event.id}
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{
+              duration: 0.45,
+              delay: index * 0.08,
+            }}
+            className="group bg-white rounded-3xl border border-gray-200 overflow-hidden shadow-sm hover:shadow-lg hover:-translate-y-1 transition-all duration-300"
+          >
 
-          <div className="relative h-44 bg-gradient-to-br from-orange-50 via-yellow-50 to-orange-100 flex items-center justify-center">
+            {/* Event Image / Placeholder */}
 
-            <div className="w-16 h-16 rounded-2xl bg-white shadow-md flex items-center justify-center text-[#FF9933] group-hover:scale-110 transition-transform duration-300">
-              <Calendar size={30} strokeWidth={1.8} />
-            </div>
+            <div className="relative h-44 bg-gradient-to-br from-orange-50 via-yellow-50 to-orange-100 flex items-center justify-center">
 
-            <span className="absolute top-4 left-4 px-3 py-1.5 bg-white rounded-full text-[10px] font-bold uppercase tracking-wider text-[#FF9933] shadow-sm">
-              {event.type}
-            </span>
-
-          </div>
-
-
-          {/* Event Content */}
-
-          <div className="p-6">
-
-            <div className="flex items-center gap-2 text-xs font-semibold text-gray-400">
-
-              <div className="w-7 h-7 rounded-lg bg-orange-50 flex items-center justify-center">
+              <div className="w-16 h-16 rounded-2xl bg-white shadow-md flex items-center justify-center text-[#FF9933] group-hover:scale-110 transition-transform duration-300">
                 <Calendar
-                  size={14}
-                  className="text-[#FF9933]"
+                  size={30}
+                  strokeWidth={1.8}
                 />
               </div>
 
-              <span>{event.date}</span>
+              <span className="absolute top-4 left-4 px-3 py-1.5 bg-white rounded-full text-[10px] font-bold uppercase tracking-wider text-[#FF9933] shadow-sm">
+                {event.category || 'Event'}
+              </span>
 
             </div>
 
-            <h3 className="mt-4 text-xl font-bold text-gray-900 group-hover:text-[#FF9933] transition-colors">
-              {event.title}
-            </h3>
 
-            <p className="mt-3 text-sm text-gray-500 leading-6">
-              Discover upcoming HKMV Folk events and participate
-              with the community.
-            </p>
+            {/* Event Content */}
 
-            <button
-              onClick={onLoginClick}
-              className="mt-6 w-full py-3.5 bg-gray-900 text-white rounded-xl text-xs font-bold uppercase tracking-wider hover:bg-[#FF9933] transition-all duration-300 flex items-center justify-center gap-2"
-            >
-              View Details
-              <ArrowRight size={14} />
-            </button>
+            <div className="p-6">
 
-          </div>
+              <div className="flex items-center gap-2 text-xs font-semibold text-gray-400">
 
-        </motion.div>
+                <div className="w-7 h-7 rounded-lg bg-orange-50 flex items-center justify-center">
+                  <Calendar
+                    size={14}
+                    className="text-[#FF9933]"
+                  />
+                </div>
 
-      ))}
+                <span>
+                  {event.date}
+                  {event.time ? ` • ${event.time}` : ''}
+                </span>
 
-    </div>
+              </div>
+
+
+              <h3 className="mt-4 text-xl font-bold text-gray-900 group-hover:text-[#FF9933] transition-colors">
+                {event.title}
+              </h3>
+
+
+              {event.location && (
+                <p className="mt-2 text-sm text-gray-400">
+                  {event.location}
+                </p>
+              )}
+
+
+              {event.description && (
+                <p className="mt-3 text-sm text-gray-500 leading-6">
+                  {event.description}
+                </p>
+              )}
+
+
+              <button
+                onClick={onLoginClick}
+                className="mt-6 w-full py-3.5 bg-gray-900 text-white rounded-xl text-xs font-bold uppercase tracking-wider hover:bg-[#FF9933] transition-all duration-300 flex items-center justify-center gap-2"
+              >
+                View Details
+                <ArrowRight size={14} />
+              </button>
+
+            </div>
+
+          </motion.div>
+
+        ))}
+
+      </div>
+
+    ) : (
+
+      <div className="border border-gray-200 rounded-3xl py-16 text-center">
+
+        <Calendar
+          size={40}
+          className="mx-auto text-gray-300"
+        />
+
+        <p className="mt-4 text-gray-400">
+          No upcoming events available.
+        </p>
+
+      </div>
+
+    )}
 
   </div>
-
 </section>
 
 

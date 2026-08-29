@@ -14,7 +14,7 @@ export const callApi = async (functionName, data = {}) => {
   const headers = {
     'Content-Type': 'application/json',
   };
-
+ 
   if (token) {
     headers['Authorization'] = `Bearer ${token}`;
   }

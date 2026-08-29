@@ -1,7 +1,10 @@
 const admin = require('firebase-admin');
 
-// Initialize Firebase Admin SDK
-admin.initializeApp();
+if (!admin.apps.length) {
+  admin.initializeApp({
+    projectId: 'folkvizag-b6830',
+  });
+}
 
 const db = admin.firestore();
 
