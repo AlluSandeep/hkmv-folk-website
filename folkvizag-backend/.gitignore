@@ -6,3 +6,4 @@ build/
 *.log
 logs/
 .DS_Store
+folkvizag-backend/config/serviceAccountKey.json
